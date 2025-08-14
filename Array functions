@@ -1,0 +1,155 @@
+// === FUNCIONES Y TIPOS DE ARRAYS EN JAVASCRIPT ===
+
+// === 1. MÉTODOS BÁSICOS DE ARRAYS (30 principales) ===
+let arr = [1, 2, 3, 4, 5];
+console.log("Array inicial:", arr);
+
+// 1. length
+console.log("Longitud:", arr.length);
+
+// 2. push() y 3. pop()
+arr.push(6);
+console.log("push(6):", arr);
+arr.pop();
+console.log("pop():", arr);
+
+// 4. unshift() y 5. shift()
+arr.unshift(0);
+console.log("unshift(0):", arr);
+arr.shift();
+console.log("shift():", arr);
+
+// 6. concat()
+let arr2 = [6, 7, 8];
+console.log("concat:", arr.concat(arr2));
+
+// 7. join()
+console.log("join('-'):", arr.join("-"));
+
+// 8. slice()
+console.log("slice(1,3):", arr.slice(1, 3));
+
+// 9. splice()
+arr.splice(2, 1, 99);
+console.log("splice:", arr);
+
+// 10. indexOf() y 11. lastIndexOf()
+console.log("indexOf(99):", arr.indexOf(99));
+let arr3 = [1, 2, 3, 2, 1];
+console.log("lastIndexOf(2):", arr3.lastIndexOf(2));
+
+// 12. includes()
+console.log("includes(3):", arr.includes(3));
+
+// 13. reverse()
+console.log("reverse:", [...arr].reverse());
+
+// 14. sort()
+console.log("sort asc:", [...arr].sort((a, b) => a - b));
+console.log("sort desc:", [...arr].sort((a, b) => b - a));
+
+// 15. forEach()
+arr.forEach((num, i) => console.log(`forEach index ${i}:`, num));
+
+// 16. map()
+console.log("map x2:", arr.map(num => num * 2));
+
+// 17. filter()
+console.log("filter pares:", arr.filter(num => num % 2 === 0));
+
+// 18. reduce()
+console.log("reduce suma:", arr.reduce((total, num) => total + num, 0));
+
+// 19. find()
+console.log("find > 3:", arr.find(num => num > 3));
+
+// 20. findIndex()
+console.log("findIndex > 3:", arr.findIndex(num => num > 3));
+
+// 21. some()
+console.log("some > 4:", arr.some(num => num > 4));
+
+// 22. every()
+console.log("every > 0:", arr.every(num => num > 0));
+
+// 23. flat()
+let arrAnidado = [1, [2, [3, 4]]];
+console.log("flat(2):", arrAnidado.flat(2));
+
+// 24. flatMap()
+console.log("flatMap:", arr.flatMap(num => [num, num * 2]));
+
+// 25. Array.isArray()
+console.log("isArray(arr):", Array.isArray(arr));
+
+// 26. fill()
+console.log("fill(0):", [1, 2, 3].fill(0));
+
+// 27. toString()
+console.log("toString:", arr.toString());
+
+// 28. copyWithin()
+let copiar = [1, 2, 3, 4, 5];
+copiar.copyWithin(0, 3);
+console.log("copyWithin(0,3):", copiar);
+
+// 29. Array.from()
+console.log("Array.from('Hola'):", Array.from("Hola"));
+
+// 30. Array.of()
+console.log("Array.of(1,2,3):", Array.of(1, 2, 3));
+
+// === 2. MÉTODOS EXTRA ===
+
+// reduceRight()
+console.log("reduceRight:", ["a", "b", "c"].reduceRight((acc, val) => acc + val));
+
+// entries(), keys(), values()
+console.log("entries():");
+for (let [i, val] of arr.entries()) console.log(i, val);
+console.log("keys():", [...arr.keys()]);
+console.log("values():", [...arr.values()]);
+
+// === 3. ARRAYS ANIDADOS ===
+let matriz = [
+    [1, 2],
+    [3, 4],
+    [5, 6]
+];
+console.log("Array anidado (matriz):", matriz);
+console.log("Elemento [1][0]:", matriz[1][0]);
+console.log("Array anidado plano:", matriz.flat());
+
+// === 4. SPARSE ARRAYS ===
+let sparse = [1, , 3]; // índice 1 vacío
+console.log("Sparse array:", sparse);
+console.log("Longitud sparse:", sparse.length);
+console.log("Iteración con for:");
+for (let i = 0; i < sparse.length; i++) {
+    console.log(i, sparse[i]);
+}
+
+// === 5. TYPED ARRAYS ===
+let buffer = new ArrayBuffer(16); // 16 bytes
+let int8 = new Int8Array(buffer);
+int8[0] = 127;
+int8[1] = -128;
+console.log("Int8Array:", int8);
+
+let uint8 = new Uint8Array(buffer);
+uint8[2] = 255;
+console.log("Uint8Array:", uint8);
+
+let float32 = new Float32Array(buffer);
+float32[0] = 3.14;
+float32[1] = -2.5;
+console.log("Float32Array:", float32);
+
+// Crear Typed Array directo
+let nums = new Uint16Array([10, 20, 30]);
+console.log("Uint16Array directo:", nums);
+
+// Métodos Typed Arrays
+console.log("map en TypedArray:", nums.map(x => x * 2));
+console.log("filter en TypedArray:", nums.filter(x => x > 15));
+console.log("reduce en TypedArray:", nums.reduce((a, b) => a + b, 0));
