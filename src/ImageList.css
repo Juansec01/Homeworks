@@ -1,0 +1,18 @@
+.image-list{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap:20px;
+  align-items:start;
+  margin-top:6px;
+  padding:10px 6px 18px 6px;
+}
+
+.image-list p{
+  text-align:center;
+  color: rgba(255,255,255,0.65);
+  grid-column: 1 / -1;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  padding:14px;
+  border-radius:12px;
+  border: 1px dashed rgba(255,255,255,0.03);
+}
