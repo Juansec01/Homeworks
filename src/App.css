@@ -1,0 +1,73 @@
+.app-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f4f6f9;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  color: black; /* 👈 toda la letra en negro */
+}
+
+h1 {
+  text-align: center;
+  color: black; /* 👈 titulo en negro */
+}
+
+.persona-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.persona-form input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.persona-form button {
+  padding: 8px 12px;
+  background: #1b4965;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.persona-form button:hover {
+  background: #163c53;
+}
+
+.queue-section h2 {
+  margin-bottom: 10px;
+  color: black; /* 👈 subtítulo en negro */
+}
+
+.queue-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.queue-section li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  color: black; /* 👈 items en negro */
+}
+
+.serve-btn {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background: #198754;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.serve-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
