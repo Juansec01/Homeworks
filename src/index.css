@@ -1,0 +1,179 @@
+/* ==== Reset global y fuente moderna ==== */
+:root {
+  --color-primary: #4a90e2;
+  --color-primary-dark: #357ab8;
+  --color-accent: #50c9c3;
+  --color-danger: #db4437;
+  --radius: 10px;
+  --transition: all 0.25s ease-in-out;
+
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #333;
+  background: linear-gradient(135deg, #4a90e2, #50c9c3);
+  min-height: 100vh;
+}
+
+/* ==== Ajuste general ==== */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ==== Contenedor principal ==== */
+.App {
+  background-color: #ffffff;
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.6s ease;
+}
+
+/* ==== Animación suave ==== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==== Títulos ==== */
+h1,
+h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* ==== Formularios ==== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+input {
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: var(--transition);
+}
+
+input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 6px rgba(74, 144, 226, 0.3);
+  outline: none;
+}
+
+/* ==== Botones ==== */
+button {
+  padding: 10px;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+/* Botón principal */
+button[type="submit"] {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Botón Google */
+button.google-btn {
+  background-color: var(--color-danger);
+  color: #fff;
+}
+
+button.google-btn:hover {
+  background-color: #c23321;
+}
+
+/* Botón logout */
+button.logout-btn {
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
+button.logout-btn:hover {
+  background-color: #3aa59f;
+}
+
+/* ==== Separador ==== */
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 1.5rem 0;
+}
+
+/* ==== Imagen de usuario ==== */
+img {
+  margin-top: 10px;
+  border-radius: 50%;
+  border: 3px solid var(--color-primary);
+}
+
+/* ==== Mensajes ==== */
+p {
+  font-size: 14px;
+  color: #555;
+}
+
+p[style*="red"] {
+  color: #e53935;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* ==== Modo oscuro opcional ==== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    background: linear-gradient(135deg, #1e1e1e, #121212);
+    color: #f1f1f1;
+  }
+
+  .App {
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+    box-shadow: 0 6px 18px rgba(255, 255, 255, 0.08);
+  }
+
+  input {
+    background-color: #2a2a2a;
+    border-color: #555;
+    color: #f1f1f1;
+  }
+
+  input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 6px rgba(80, 201, 195, 0.3);
+  }
+
+  button[type="submit"] {
+    background-color: var(--color-primary);
+  }
+
+  button.google-btn {
+    background-color: var(--color-danger);
+  }
+
+  button.logout-btn {
+    background-color: var(--color-accent);
+  }
+}
