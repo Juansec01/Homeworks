@@ -1,10 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCydN-8GuNRHyJWQkNBdgGKoJMGZ5tNC28",
   authDomain: "edya2-a841f.firebaseapp.com",
+  databaseURL: "https://edya2-a841f-default-rtdb.firebaseio.com", // ✅ CRÍTICO: Añadir databaseURL
   projectId: "edya2-a841f",
   storageBucket: "edya2-a841f.firebasestorage.app",
   messagingSenderId: "121646270135",
@@ -12,15 +14,24 @@ const firebaseConfig = {
   measurementId: "G-X5KBSKERZE"
 };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const db = getFirestore(app);
+let app;
+let auth;
+let db;
+let realtimeDb;
 
-enableIndexedDbPersistence(db).catch((err) => {
-  console.log("Firestore persistence error:", err.code);
-});
+try {
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  db = getFirestore(app);
+  realtimeDb = getDatabase(app);
+  
+  console.log("✅ Firebase configurado correctamente");
+  console.log("📊 Project ID:", firebaseConfig.projectId);
+  console.log("🔗 Database URL:", firebaseConfig.databaseURL);
+} catch (error) {
+  console.error("❌ Error configurando Firebase:", error);
+  throw error;
+}
 
-console.log("🔥 Firebase initialized successfully");
-console.log("🔍 Project ID:", firebaseConfig.projectId);
-
+export { auth, db, realtimeDb };
 export default app;
