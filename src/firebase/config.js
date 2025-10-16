@@ -1,9 +1,7 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth } from "firebase/auth";
+import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCydN-8GuNRHyJWQkNBdgGKoJMGZ5tNC28",
   authDomain: "edya2-a841f.firebaseapp.com",
@@ -14,11 +12,15 @@ const firebaseConfig = {
   measurementId: "G-X5KBSKERZE"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-// Export auth & Google provider
 export const auth = getAuth(app);
-export const googleProvider = new GoogleAuthProvider();
+export const db = getFirestore(app);
 
+enableIndexedDbPersistence(db).catch((err) => {
+  console.log("Firestore persistence error:", err.code);
+});
+
+console.log("🔥 Firebase initialized successfully");
+console.log("🔍 Project ID:", firebaseConfig.projectId);
+
+export default app;

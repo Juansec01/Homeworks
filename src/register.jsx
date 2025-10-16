@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { registerAuth } from "./thunk";
+import { registerUser } from "./thunk";
 
 export const Registro = () => {
   const dispatch = useDispatch();
   const [form, setForm] = useState({
-    email: "juan@example.com",
+    email: "",
     password: "",
   });
 
@@ -13,13 +13,10 @@ export const Registro = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-
   const onSubmit = (e) => {
-  e.preventDefault();
-  console.log("Email:", form.email, "Password:", form.password); // 👈 check this
-  dispatch(registerAuth(form.email, form.password));
+    e.preventDefault();
+    dispatch(registerUser({ email: form.email, password: form.password })); // ✅ CORREGIR
   };
-
 
   return (
     <div>
@@ -46,5 +43,3 @@ export const Registro = () => {
     </div>
   );
 };
-
-

@@ -1,38 +1,70 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { auth, googleProvider } from "./firebase/config";
-import {
+import { 
   signInWithEmailAndPassword,
-  signInWithPopup,
   signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword 
 } from "firebase/auth";
+import { auth } from "./firebase/config";
 
-// Login con email y password
 export const loginUser = createAsyncThunk(
-  "auth/loginUser",
+  "auth/login",
   async ({ email, password }, { rejectWithValue }) => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      return userCredential.user;
+      return {
+        uid: userCredential.user.uid,
+        email: userCredential.user.email,
+        displayName: userCredential.user.displayName,
+      };
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
 
-// Login con Google
 export const loginWithGoogle = createAsyncThunk(
-  "auth/loginWithGoogle",
+  "auth/googleLogin",
   async (_, { rejectWithValue }) => {
     try {
-      const result = await signInWithPopup(auth, googleProvider);
-      return result.user;
+      const provider = new GoogleAuthProvider();
+      const userCredential = await signInWithPopup(auth, provider);
+      return {
+        uid: userCredential.user.uid,
+        email: userCredential.user.email,
+        displayName: userCredential.user.displayName,
+      };
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
 
-// Logout
-export const logoutUser = createAsyncThunk("auth/logoutUser", async () => {
-  await signOut(auth);
-});
+export const logoutUser = createAsyncThunk(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      await signOut(auth);
+      return null;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const registerUser = createAsyncThunk(
+  "auth/register",
+  async ({ email, password }, { rejectWithValue }) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      return {
+        uid: userCredential.user.uid,
+        email: userCredential.user.email,
+        displayName: userCredential.user.displayName,
+      };
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
