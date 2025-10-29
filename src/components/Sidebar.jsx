@@ -1,38 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+function Sidebar() {
   return (
-    <div className="w-64 bg-gray-800 text-white h-screen p-4 space-y-2">
-      <h2 className="text-lg font-bold mb-4">Menú</h2>
+    <div style={{ width: "220px", backgroundColor: "#1a1a1a", padding: "20px", color: "white" }}>
+      <h2>Menú</h2>
+      <nav>
+        <ul style={{ listStyle: "none", padding: 0 }}>
+          <li><Link to="/">Home</Link></li>
 
-      <Link to="/" className="block p-2 hover:bg-gray-700 rounded">
-        Inicio
-      </Link>
+          <li><strong>Settings</strong></li>
+          <ul>
+            <li><Link to="/settings/profile">Profile</Link></li>
+            <li><Link to="/settings/password">Password</Link></li>
+            <li><Link to="/settings/notification">Notification</Link></li>
+          </ul>
 
-      <h3 className="mt-4 font-semibold">⚙️ Configuración</h3>
-      <Link to="/settings/profile" className="block p-2 hover:bg-gray-700 rounded">
-        Perfil
-      </Link>
-      <Link to="/settings/password" className="block p-2 hover:bg-gray-700 rounded">
-        Contraseña
-      </Link>
-      <Link to="/settings/notification" className="block p-2 hover:bg-gray-700 rounded">
-        Notificaciones
-      </Link>
-
-      <h3 className="mt-4 font-semibold">🆘 Ayuda</h3>
-      <Link to="/help/faqs" className="block p-2 hover:bg-gray-700 rounded">
-        FAQs
-      </Link>
-      <Link to="/help/ticket" className="block p-2 hover:bg-gray-700 rounded">
-        Tickets
-      </Link>
-      <Link to="/help/status" className="block p-2 hover:bg-gray-700 rounded">
-        Estado
-      </Link>
+          <li><strong>Help</strong></li>
+          <ul>
+            <li><Link to="/help/faqs">Faqs</Link></li>
+            <li><Link to="/help/tickets">Tickets</Link></li>
+            <li><Link to="/help/status">Status</Link></li>
+          </ul>
+        </ul>
+      </nav>
     </div>
   );
-};
+}
 
 export default Sidebar;
