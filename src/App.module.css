@@ -1,0 +1,193 @@
+/* Variables de Estilo */
+:root {
+    --bg-dark: #1e1e2f;
+    --bg-card: #27293d;
+    --text-light: #ffffff;
+    --color-primary: #61dafb; /* Azul React */
+    --color-success: #4CAF50;
+    --color-danger: #e91e63;
+    --shadow-main: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ------------------- Estilos Globales de la Aplicación (App.jsx) ------------------- */
+
+.appContainer {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mainContent {
+    flex-grow: 1;
+    padding: 30px;
+}
+
+.header {
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 10px;
+}
+
+.header h1 {
+    color: var(--color-primary);
+    font-size: 2.5em;
+}
+
+/* ------------------- Estilos del Panel Lateral (Sidebar) ------------------- */
+
+.sidebar {
+    width: 300px;
+    background-color: var(--bg-card);
+    padding: 20px;
+    border-right: 1px solid #3d3e52;
+    box-shadow: var(--shadow-main);
+}
+
+.sidebar h2 {
+    color: var(--text-light);
+    margin-bottom: 15px;
+    border-bottom: 1px solid #5a5a7a;
+    padding-bottom: 5px;
+}
+
+.cityList {
+    list-style: none;
+    padding: 0;
+}
+
+.cityListItem {
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cityListItem:hover {
+    background-color: #3b3d5b;
+    transform: translateY(-1px);
+}
+
+.cityListItem.selected {
+    background-color: var(--color-primary);
+    color: var(--bg-dark);
+    font-weight: bold;
+    box-shadow: 0 0 10px var(--color-primary);
+}
+
+.cityListItem.selected:hover {
+    background-color: var(--color-primary); 
+}
+
+/* ------------------- Estilos de Botones ------------------- */
+
+.button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.buttonDelete {
+    background-color: var(--color-danger);
+    color: var(--text-light);
+}
+
+.buttonAdd {
+    background-color: var(--color-success);
+    color: var(--bg-dark);
+}
+
+/* ------------------- Estilos de Display de Métricas (NetworkDisplay.jsx) ------------------- */
+
+.metricCardContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.metricCard {
+    background-color: var(--bg-card);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-main);
+    transition: transform 0.3s;
+    border-left: 5px solid var(--color-primary);
+}
+
+.metricCard:hover {
+    transform: translateY(-5px);
+}
+
+.metricCard h3 {
+    color: var(--color-primary);
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.metricCard h4 {
+    color: #a0a0ff;
+    border-bottom: 1px dashed #5a5a7a;
+    padding-bottom: 5px;
+}
+
+.metricValue {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--color-success);
+    margin: 10px 0;
+}
+
+.connections {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #bbb;
+}
+
+/* --- ESTILOS DE FORMULARIOS AÑADIDOS PREVIAMENTE --- */
+
+.formInput {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #5a5a7a;
+    background-color: #3b3d5b;
+    color: var(--text-light);
+    font-size: 1em;
+    box-sizing: border-box; 
+    /* Estilo importante para select y input */
+    width: 100%; 
+    appearance: none; /* Mejor apariencia en selects */
+}
+
+.formInput:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 5px rgba(97, 218, 251, 0.5);
+}
+
+.formLabel {
+    color: #bbb;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* --- AJUSTE VISUAL PARA EL SIDEBAR --- */
+.sidebar .formInput {
+    margin-bottom: 10px;
+}
